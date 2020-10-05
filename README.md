@@ -35,24 +35,33 @@ To build the css:
 4. Run css build in `radboudumc-theme`: `npm run deploy-watch`
 
 ### Building with Docker
-Run the following scripts
+
+Run the following scripts in your bash:
+
 ```
 docker build –tag website-content-docker .
 docker run -it -p 8000:8000 -v <path-to-website-content>:/website-content/ website-content-docker bash
 cd website-content
 ```
-We will use the dummy bib files here with the following command
+
+We will use the dummy bib files here with the following command:
+
 `python ./bibliography/bibparser.py`
+
 If you want to work with the full bib files, setup your GitHub token and set `GH_BIB_TOKEN` in your environment before you run the following command:
+
 `./parse_publications.sh`
-Then resume with setting up your website of choice. If it is `website-diag`, then run the following:
+
+Then resume with setting up your website of choice. 
+If it is `website-diag`, then run the following:
+
 ```
 WEBSITE=website-diag ./copy_content.sh
 cp -r assets/* website-diag/output/
 cd website-diag
 pelican --autoreload --listen
 ```
-The website should be running at `localhost:8000` on your browser.
+The website should be running at `http://localhost:8000/` on your browser.
 
 To work on CSS:
 ```
